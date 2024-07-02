@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private string newScene = "UIGabriel";
+    [SerializeField] private string newScene;
 
     public void NewGameButton()
     {
