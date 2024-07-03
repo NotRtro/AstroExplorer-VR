@@ -5,12 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/UIScene.unity
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
     guid: 501c5ea4c1ca8451dbd88600d2b64315
   - enabled: 1
     path: Assets/Scenes/solarSystemTemplate.unity
     guid: 171f37a4e4a04e74bac5845dc153db3d
+  - enabled: 0
+    path: Assets/Scenes/SettingsScene2.unity
+    guid: df5ae3cc4efca4f91bfc915a2017f6a1
+  - enabled: 0
+    path: Assets/Scenes/CreateSystemScene2.unity
+    guid: f9485df8577d6432b8b6c53a8e0fc339
+  - enabled: 1
+    path: Assets/Scenes/SettingsScene.unity
+    guid: 62f969d6f26a26d44beecce208d0717e
+  - enabled: 1
+    path: Assets/Scenes/CreateSystemScene.unity
+    guid: c25d33f73882d334b8f5a757a5218d46
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f12ba3823fd9c27479a3a6eefefce6fd, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e586fbfd3ba5f7f4793d950402ab492d, type: 2}

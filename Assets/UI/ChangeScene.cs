@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,6 @@ public class ChangeScene : MonoBehaviour
 
     public void NewGameButton()
     {
-        SceneManager.LoadScene(newScene);
+        SceneManager.LoadScene(sceneName: newScene);
     }
 }
