@@ -1,33 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class world_gravity : MonoBehaviour
+public class GravitationalAttraction : MonoBehaviour
 {
-    IEnumerator Routine()
-    {
-        while (true)
-        {
-            Rigidbody[] Rigidbodies = FindObjectsOfType(typeof(Rigidbody)) as Rigidbody[];
-            for (int x = 0; x < Rigidbodies.Length; x++)
-            {
-                yield return new WaitForSeconds(0);
+    public Rigidbody sun;
+    public float G = 6.67430e-21f;
 
-                for (int y = 0; y < Rigidbodies.Length; y++)
-                {
-                    if (x != y)
-                    {
-                        Rigidbodies[x].AddForce((Rigidbodies[y].gameObject.transform.position - Rigidbodies[x].transform.position) * (Rigidbodies[y].mass / Vector3.Distance(Rigidbodies[x].transform.position, Rigidbodies[y].transform.position)));
-                        yield return new WaitForSeconds(0);
-                    }
-                }
-            }
-            yield return new WaitForSeconds(0);
-        }
-    }
-    // Update is called once per frame
-    void Awake()
+    void FixedUpdate()
     {
-        StartCoroutine(Routine());
+        
+        Rigidbody[] Rigidbodies = FindObjectsOfType(typeof(Rigidbody)) as Rigidbody[];
+        for (int i = 0; i < Rigidbodies.Length; i++)
+        {
+                Vector3 direction = sun.gameObject.transform.position - Rigidbodies[i].gameObject.transform.position;
+                float distance = direction.magnitude;
+                Vector3 forceDirection = direction.normalized;
+                float forceMagnitude = G * Rigidbodies[i].mass * sun.mass / Mathf.Pow(distance, 2);
+                Vector3 force = forceDirection * forceMagnitude;
+                Rigidbodies[i].AddForce(force);
+        }
+            
     }
+    
 }
