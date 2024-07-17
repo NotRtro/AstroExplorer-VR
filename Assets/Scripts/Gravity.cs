@@ -7,18 +7,23 @@ public class GravitationalAttraction : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        Rigidbody[] Rigidbodies = FindObjectsOfType(typeof(Rigidbody)) as Rigidbody[];
-        for (int i = 0; i < Rigidbodies.Length; i++)
+        ApplyGravitationalForces();
+    }
+
+    void ApplyGravitationalForces()
+    {
+        Rigidbody[] rigidbodies = FindObjectsOfType<Rigidbody>();
+        for (int i = 0; i < rigidbodies.Length; i++)
         {
-                Vector3 direction = sun.gameObject.transform.position - Rigidbodies[i].gameObject.transform.position;
+            if (rigidbodies[i] != sun) // Avoid applying force to the sun itself
+            {
+                Vector3 direction = sun.gameObject.transform.position - rigidbodies[i].gameObject.transform.position;
                 float distance = direction.magnitude;
                 Vector3 forceDirection = direction.normalized;
-                float forceMagnitude = G * Rigidbodies[i].mass * sun.mass / Mathf.Pow(distance, 2);
+                float forceMagnitude = G * rigidbodies[i].mass * sun.mass / Mathf.Pow(distance, 2);
                 Vector3 force = forceDirection * forceMagnitude;
-                Rigidbodies[i].AddForce(force);
+                rigidbodies[i].AddForce(force);
+            }
         }
-            
     }
-    
 }
